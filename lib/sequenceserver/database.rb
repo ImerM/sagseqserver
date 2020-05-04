@@ -20,7 +20,7 @@ module SequenceServer
   # SequenceServer will always place BLAST database files alongside input FASTA,
   # and use `parse_seqids` option of `makeblastdb` to format databases.
   Database = Struct.new(:name, :title, :type, :nsequences, :ncharacters,
-                        :updated_on) do
+                        :updated_on, :dbtype) do
 
     extend Forwardable
 
@@ -29,12 +29,24 @@ module SequenceServer
     def initialize(*args)
       args[2].downcase! # database type
       args.each(&:freeze)
+      case args[0]
+      when /SAG/
+        @dbtype = "SAG"
+      when /reference_genome/
+        @dbtype = "Reference Genomes"
+      when /coassembly/
+        @dbtype = "Coassembly"
+      when /protein/
+        @dbtype = "Protein"
+      else
+        @dbtype = "NA"
+      end
       super
 
       @id = Digest::MD5.hexdigest args.first
     end
 
-    attr_reader :id
+    attr_reader :id, :dbtype
 
     def retrieve(accession, coords = nil)
       cmd = "blastdbcmd -db #{name} -entry '#{accession}'"
@@ -64,7 +76,7 @@ module SequenceServer
     end
 
     def to_json(*args)
-      to_h.update(id: id).to_json(*args)
+      to_h.update(id: id, dbtype: dbtype).to_json(*args)
     end
   end
 

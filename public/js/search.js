@@ -49,7 +49,7 @@ var DnD = React.createClass({
                                 className="dnd-overlay-drop"
                                 style={{display: 'none'}}>
                                 <i className="fa fa-2x fa-file-o"></i>
-                                Drop query sequence file here
+                                Drop query sequence file here TEST
                             </p>
                             <p
                                 className="dnd-overlay-overwrite"
@@ -634,7 +634,7 @@ var Databases = React.createClass({
 
         return _.select(this.props.databases,
             function (database) {
-                return database.type === category;
+                return database.dbtype === category;
             });
     },
 
@@ -644,7 +644,7 @@ var Databases = React.createClass({
 
     categories: function () {
         return _.uniq(_.map(this.props.databases,
-            _.iteratee('type'))).sort();
+            _.iteratee('dbtype'))).sort();
     },
 
     handleClick: function (database) {
