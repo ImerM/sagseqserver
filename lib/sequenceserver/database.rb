@@ -32,12 +32,14 @@ module SequenceServer
       case args[0]
       when /SAG/
         @dbtype = "SAG"
-      when /reference_genome/
-        @dbtype = "Reference Genomes"
       when /coassembly/
         @dbtype = "Coassembly"
+      when /coas_trans/
+        @dbtype = "Coassembly Transcript"
       when /protein/
         @dbtype = "Protein"
+      when /reference_genome/
+        @dbtype = "Reference Genomes"
       else
         @dbtype = "NA"
       end
