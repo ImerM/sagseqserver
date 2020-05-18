@@ -5,13 +5,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>SequenceServer: Custom BLAST Server</title>
-  <meta name="author" content="Anurag Priyam">
-  <meta name="author" content="Ben J. Woodcroft">
-  <meta name="author" content="Vivek Rai">
-  <meta name="author" content="Cedric Wurm">
-  <meta name="author" content="Yannick Wurm">
-  <meta name="description" content="Custom BLAST server provided by SequenceServer (http://www.sequenceserver.com)"/>
+  <title>SINGEK SAG Database</title>
+  <meta name="description" content="Custom BLAST server with SAGs from Stramenopiles collected by SINGEK-ITN (http://www.singek.eu), based on SequenceServer (http://www.sequenceserver.com)"/>
 
   <!-- CSS -->
   <% if settings.production? %>
@@ -28,19 +23,27 @@
       class="container">
       <a
         class="navbar-brand"
-        href="http://sequenceserver.com" target="_blank">
-        <img class="logo" src="SequenceServer_logo.png" alt="sequenceserver_logo">
+        href="http://sag.icm.csic.es" target="_blank">
+        <img class="logo" src="SequenceServer_logo_singek.png" alt="sequenceserver_logo">
         <small>
-          <%= SequenceServer::VERSION %>
+          SINGEK SAG BLAST Server
         </small>
       </a>
       <ul class="nav navbar-nav navbar-right hover-reset focus-reset">
         <li>
           <a
             target="_blank"
-            href="http://www.sequenceserver.com/#license-and-support">
+            href="/downloads">
+            <i class="fa fa-download"></i>
+            &nbsp;Download FASTA files
+          </a>
+        </li>
+        <li>
+          <a
+            target="_blank"
+            href="/about">
             <i class="fa fa-comment-o"></i>
-            &nbsp;Help &amp; Support
+            About
           </a>
         </li>
       </ul>
@@ -71,31 +74,27 @@
       <p
         class="text-center">
         <a
-          href='http://www.sequenceserver.com'>
+          href='https://sag.icm.csic.es'>
           <%=
             quote = [
-              "Custom BLAST web interface by SequenceServer.",
-              "SequenceServer: Local BLAST with bespoke html interface.",
-              "Set up custom BLAST interface with SequenceServer.",
-              "Easy BLASTing with SequenceServer.",
-              "Run BLAST locally with Sequenceserver.",
-              "BLAST against a custom, local database with SequenceServer.",
-              "Run BLAST locally on Mac OSX with SequenceServer.",
-              "Run BLAST locally on Ubuntu with SequenceServer.",
-              "Run BLAST locally on Linux with SequenceServer."
-            ][rand(9)]
+              "SINGEK SAG database with BLAST web interface",
+              "Created using SequenceServer(www.sequenceserver.com)",
+            ][rand(2)]
           %>
         </a>
         <a
           class="twitter-share-button"
           href="https://twitter.com/share"
-          data-url="http://www.sequenceserver.com" data-text="<%= quote %>" data-via="yeban" data-hashtags="bioinformatics">
+          data-url="http://sag.icm.csic.es" data-text="<%= quote %>" data-via="SINGEK_ITN" data-hashtags="bioinformatics">
          Tweet
         </a>
         <br>
         Please cite relevant data sources and:
         <a href="https://doi.org/10.1093/molbev/msz185">
           Priyam et al. (2019) Sequenceserver: a modern graphical user interface for custom BLAST databases</a>.
+        <br>
+        <p>This project has received funding from the European Union's horizon 2020 research and innovation programme
+        under the Marie Sklodowska-Curie Grant Agreement No 675752.</p>
       </p>
     </div> <!-- /container -->
   </div>

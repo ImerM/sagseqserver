@@ -641,6 +641,9 @@ var Databases = React.createClass({
     nselected: function () {
         return $('input[name="databases[]"]:checked').length;
     },
+    ntypeselected: function (type) {
+        return $(`.${type} input[name="databases[]"]:checked`).length;
+    },
 
     categories: function () {
         return _.uniq(_.map(this.props.databases,
@@ -673,8 +676,7 @@ var Databases = React.createClass({
 
     renderDatabases: function (category) {
         // Panel name and column width.
-        var panelTitle = category[0].toUpperCase() +
-            category.substring(1).toLowerCase() + ' databases';
+        var panelTitle = category.replace("_"," ") + ' databases';
         var columnClass = this.categories().length === 1 ?  'col-md-12' :
             'col-md-6';
 
@@ -682,10 +684,10 @@ var Databases = React.createClass({
         var toggleState = '[Select all]';
         var toggleClass = 'btn-link';
         var toggleShown = this.databases(category).length > 1 ;
-        var toggleDisabled = this.state.type && this.state.type !== category;
+        var toggleDisabled = this.state.dbtype && this.state.dbtype !== category;
         if (toggleShown && toggleDisabled) toggleClass += ' disabled';
         if (!toggleShown) toggleClass += ' hidden';
-        if (this.nselected() === this.databases(category).length) {
+        if (this.ntypeselected(category) === this.databases(category).length) {
             toggleState = '[Deselect all]';
         }
 

@@ -103,8 +103,14 @@ module SequenceServer
 
     # Returns base HTML. Rest happens client-side: polling for and rendering
     # the results.
-    get '/:jid' do
-      erb :report, layout: true
+    get '/:jid' do |jid|
+      if jid == "downloads"
+        erb :downloads, layout: true
+      elsif jid == "about"
+        erb :about, layout: true        
+      else
+        erb :report, layout: true
+      end
     end
 
     # @params sequence_ids: whitespace separated list of sequence ids to
@@ -133,7 +139,7 @@ module SequenceServer
                 filename: sequences.filename)
     end
 
-    # Download BLAST report in various formats.
+    # Download BLAST report in various formats.a
     get '/download/:jid.:type' do |jid, type|
       job = Job.fetch(jid)
       out = BLAST::Formatter.new(job, type)

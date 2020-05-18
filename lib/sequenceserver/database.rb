@@ -35,11 +35,11 @@ module SequenceServer
       when /coassembly/
         @dbtype = "Coassembly"
       when /coas_trans/
-        @dbtype = "Coassembly Transcript"
+        @dbtype = "Coassembly_Transcript"
       when /protein/
         @dbtype = "Protein"
       when /reference_genome/
-        @dbtype = "Reference Genomes"
+        @dbtype = "Reference_Genome"
       else
         @dbtype = "NA"
       end
