@@ -310,18 +310,20 @@ var Form = React.createClass({
                     <div className="form-group query-container">
                         <Query ref="query" onSequenceTypeChanged={this.handleSequenceTypeChanged}/>
                     </div>
-                    <div className="notifications" id="notifications">
-                        <NucleotideNotification/>
-                        <ProteinNotification/>
-                        <MixedNotification/>
-                    </div>
-                    <Databases ref="databases" databases={this.state.databases}
-                        preSelectedDbs={this.state.preSelectedDbs}
-                        onDatabaseTypeChanged={this.handleDatabaseTypeChanaged} />
                     <div className="form-group">
                         <Options ref="opts"/>
                         <SearchButton ref="button" onAlgoChanged={this.handleAlgoChanged}/>
                     </div>
+                    <div className="form-group">
+                        <div className="notifications" id="notifications">
+                            <NucleotideNotification/>
+                            <ProteinNotification/>
+                            <MixedNotification/>
+                        </div>
+                        <Databases ref="databases" databases={this.state.databases}
+                            preSelectedDbs={this.state.preSelectedDbs}
+                            onDatabaseTypeChanged={this.handleDatabaseTypeChanaged} />
+                        </div>
                 </form>
             </div>
         );
