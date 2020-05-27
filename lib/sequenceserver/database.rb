@@ -31,13 +31,13 @@ module SequenceServer
       args.each(&:freeze)
       case args[0]
       when /SAG/
-        @dbtype = "SAG"
+        @dbtype = "Assembled_Contigs"
       when /coassembly/
-        @dbtype = "Coassembly"
+        @dbtype = "Coassembled_Contigs"
       when /coas_trans/
-        @dbtype = "Coassembly_Transcript"
+        @dbtype = "Predicted_genes"
       when /protein/
-        @dbtype = "Protein"
+        @dbtype = "Predicted_Protein"
       when /reference_genome/
         @dbtype = "Reference_Genome"
       else
