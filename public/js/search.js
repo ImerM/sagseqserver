@@ -678,7 +678,7 @@ var Databases = React.createClass({
 
     renderDatabases: function (category) {
         // Panel name and column width.
-        var panelTitle = category.replace("_"," ") + ' databases';
+        var panelTitle = category.split("_").join(" ") + ' databases';
         var columnClass = this.categories().length === 1 ?  'col-md-12' :
             'col-md-6';
 
